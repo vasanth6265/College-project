@@ -1,15 +1,15 @@
 // Updated game data with ratings
 const games = [
-  { title: "Cyberpunk 2077", genre: "Action", image: "images/cyberpunk.jpg", price: 2999, rating: 4.5, link: "buy-cyberpunk2077.html" },
-  { title: "Elden Ring", genre: "RPG", image: "images/eldenring.jpg", price: 3599, rating: 5, link: "buy-eldenring.html" },
-  { title: "The Sims 4", genre: "Simulation", image: "images/thesims4.jpg", price: 0, rating: 4, link: "buy-thesims4.html" },
-  { title: "Red Dead Redemption 2", genre: "Action", image: "images/rdr2.jpg", price: 4999, rating: 5, link: "buy-rdr2.html" },
-  { title: "The Last of Us Part I", genre: "Action", image: "images/tlou.jpg", price: 3999, rating: 4.8, link: "buy-tlou.html" },
-  { title: "The Last of Us Part II", genre: "Action", image: "images/tlou2.jpg", price: 3299, rating: 4.7, link: "buy-tlou2.html" },
-  { title: "Marvel's Spider-Man Remastered", genre: "Action", image: "images/spiderman.jpg", price: 3999, rating: 4.9, link: "buy-spiderman.html" },
-  { title: "Marvel's Spider-Man: Miles Morales", genre: "Action", image: "images/spidermanmiles.jpg", price: 3299, rating: 4.6, link: "buy-spidermanmiles.html" },
-  { title: "Marvel's Spider-Man 2", genre: "Action", image: "images/spiderman2.jpg", price: 3999, rating: 4.7, link: "buy-spiderman2.html" },
-  { title: "Forza Horizon 5", genre: "Racing", image: "images/fh5.jpg", price: 3499, rating: 4.8, link: "buy-fh5.html" }
+  { title: "Cyberpunk 2077", genre: "Action", image: "cyberpunk.jpg", price: 2999, rating: 4.5, link: "buy-cyberpunk2077.html" },
+  { title: "Elden Ring", genre: "RPG", image: "eldenring.jpg", price: 3599, rating: 5, link: "buy-eldenring.html" },
+  { title: "The Sims 4", genre: "Simulation", image: "thesims4.jpg", price: 0, rating: 4, link: "buy-thesims4.html" },
+  { title: "Red Dead Redemption 2", genre: "Action", image: "rdr2.jpg", price: 4999, rating: 5, link: "buy-rdr2.html" },
+  { title: "The Last of Us Part I", genre: "Action", image: "tlou.jpg", price: 3999, rating: 4.8, link: "buy-tlou.html" },
+  { title: "The Last of Us Part II", genre: "Action", image: "tlou2.jpg", price: 3299, rating: 4.7, link: "buy-tlou2.html" },
+  { title: "Marvel's Spider-Man Remastered", genre: "Action", image: "spiderman.jpg", price: 3999, rating: 4.9, link: "buy-spiderman.html" },
+  { title: "Marvel's Spider-Man: Miles Morales", genre: "Action", image: "spidermanmiles.jpg", price: 3299, rating: 4.6, link: "buy-spidermanmiles.html" },
+  { title: "Marvel's Spider-Man 2", genre: "Action", image: "spiderman2.jpg", price: 3999, rating: 4.7, link: "buy-spiderman2.html" },
+  { title: "Forza Horizon 5", genre: "Racing", image: "fh5.jpg", price: 3499, rating: 4.8, link: "buy-fh5.html" }
 ];
 
 const gamesPerPage = 16;
