@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign Up - PC Game Store</title>
+  <meta name="description" content="Sign up for PC Game Store" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous" defer></script>
+  <script src="script.js" defer></script>
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    .auth-container {
+      background-color: #1f1f1f;
+      padding: 30px 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 255, 255, 0.1);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+    .auth-container h1 {
+      margin: 0 0 15px 0;
+      font-size: 28px;
+      color: #00ffff;
+      font-weight: bold;
+    }
+    .auth-container h2 {
+      margin: 0 0 25px 0;
+      color: #00ffff;
+      font-weight: 600;
+    }
+    .auth-container input[type="text"],
+    .auth-container input[type="password"] {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 15px;
+      background-color: #121212;
+      border: 2px solid #00ffff;
+      border-radius: 6px;
+      color: white;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    .password-wrapper {
+      position: relative;
+    }
+    .toggle-password {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      user-select: none;
+      width: 24px;
+      height: 24px;
+      stroke: #00ffff;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .toggle-password:hover {
+      stroke: #00cccc;
+    }
+    button {
+      width: 100%;
+      padding: 14px 0;
+      background-color: #00ffff;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      color: #000;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #00cccc;
+    }
+    .error-message {
+      color: #ff4d4d;
+      font-size: 14px;
+      margin-top: 10px;
+      display: none;
+    }
+    .toggle-link {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #00ffff;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-main">
+    <div class="logo">
+      <i class="fas fa-gamepad"></i> PC Game Store
+    </div>
+    <!-- Nav buttons removed -->
+  </div>
+</header>
+
+<main>
+  <div class="auth-container">
+    <h1>Sign Up</h1>
+    <form id="signupForm" autocomplete="off" spellcheck="false" autocomplete="new-password">
+      <!-- Dummy hidden inputs to block autofill -->
+      <input type="text" name="fakeusernameremembered" style="display:none" />
+      <input type="password" name="fakepasswordremembered" style="display:none" />
+
+      <input type="text" id="username" name="username" placeholder="Create Username" required autocomplete="off" spellcheck="false" />
+
+      <div class="password-wrapper">
+        <input type="password" id="signupPassword" name="password" placeholder="Create Password" required autocomplete="new-password" spellcheck="false" />
+        <!-- Eye Open SVG -->
+        <svg id="eyeOpen" class="toggle-password" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+        <!-- Eye Closed SVG -->
+        <svg id="eyeClosed" class="toggle-password" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" style="display:none;">
+          <path d="M17.94 17.94A10.94 10.94 0 0112 20c-7 0-11-8-11-8a19.49 19.49 0 014.76-6.29"/>
+          <line x1="1" y1="1" x2="23" y2="23"/>
+        </svg>
+      </div>
+
+      <div class="password-wrapper">
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required autocomplete="new-password" spellcheck="false" />
+        <!-- Eye Open SVG for confirm password -->
+        <svg id="eyeOpenConfirm" class="toggle-password" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+        <!-- Eye Closed SVG for confirm password -->
+        <svg id="eyeClosedConfirm" class="toggle-password" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" style="display:none;">
+          <path d="M17.94 17.94A10.94 10.94 0 0112 20c-7 0-11-8-11-8a19.49 19.49 0 014.76-6.29"/>
+          <line x1="1" y1="1" x2="23" y2="23"/>
+        </svg>
+      </div>
+
+      <button type="submit">Sign Up</button>
+      <p class="error-message" id="signupError"></p>
+    </form>
+
+    <p class="toggle-link" onclick="window.location.href='login.html'">Already have an account? Login</p>
+  </div>
+</main>
+
+<script>
+  const signupForm = document.getElementById("signupForm");
+  const signupError = document.getElementById("signupError");
+
+  const passwordInput = document.getElementById("signupPassword");
+  const confirmPasswordInput = document.getElementById("confirmPassword");
+
+  const eyeOpen = document.getElementById("eyeOpen");
+  const eyeClosed = document.getElementById("eyeClosed");
+  const eyeOpenConfirm = document.getElementById("eyeOpenConfirm");
+  const eyeClosedConfirm = document.getElementById("eyeClosedConfirm");
+
+  function togglePassword(input, eyeOpenIcon, eyeClosedIcon) {
+    if (input.type === "password") {
+      input.type = "text";
+      eyeOpenIcon.style.display = "none";
+      eyeClosedIcon.style.display = "inline";
+    } else {
+      input.type = "password";
+      eyeOpenIcon.style.display = "inline";
+      eyeClosedIcon.style.display = "none";
+    }
+  }
+
+  eyeOpen.addEventListener("click", () => togglePassword(passwordInput, eyeOpen, eyeClosed));
+  eyeClosed.addEventListener("click", () => togglePassword(passwordInput, eyeOpen, eyeClosed));
+
+  eyeOpenConfirm.addEventListener("click", () => togglePassword(confirmPasswordInput, eyeOpenConfirm, eyeClosedConfirm));
+  eyeClosedConfirm.addEventListener("click", () => togglePassword(confirmPasswordInput, eyeOpenConfirm, eyeClosedConfirm));
+
+  signupForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    signupError.style.display = "none";
+    
+    const username = signupForm.username.value.trim();
+    const password = signupForm.password.value;
+    const confirmPassword = signupForm.confirmPassword.value;
+    let users = JSON.parse(localStorage.getItem("users") || "{}");
+
+    if (username.length < 3) {
+      signupError.textContent = "Username must be at least 3 characters.";
+      signupError.style.display = "block";
+      return;
+    }
+    if (password.length < 6) {
+      signupError.textContent = "Password must be at least 6 characters.";
+      signupError.style.display = "block";
+      return;
+    }
+    if (password !== confirmPassword) {
+      signupError.textContent = "Passwords do not match.";
+      signupError.style.display = "block";
+      return;
+    }
+    if (users[username]) {
+      signupError.textContent = "Username already exists.";
+      signupError.style.display = "block";
+      return;
+    }
+
+    // Save new user
+    users[username] = password;
+    localStorage.setItem("users", JSON.stringify(users));
+    window.location.href = "login.html";
+  });
+</script>
+
+</body>
+</html>

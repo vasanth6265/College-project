@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About Us - PC Game Store</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .main-content {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00ffff66;
+      color: #ccc;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+    }
+    .main-content h1 {
+      color: #00ffff;
+      font-size: 32px;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+    .main-content p {
+      font-size: 18px;
+      margin-bottom: 15px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: justify;
+    }
+    a.back-link {
+      display: inline-block;
+      margin-top: 25px;
+      color: #00ffff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    a.back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  // Update auth and cart count as usual
+  function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    document.getElementById("cartCount").textContent = cart.length;
+  }
+  function updateAuthLink() {
+    const authLink = document.getElementById("authLink");
+    const user = localStorage.getItem("user");
+    authLink.textContent = user ? "Logout" : "Login";
+    authLink.onclick = (e) => {
+      if (user) {
+        e.preventDefault();
+        localStorage.removeItem("user");
+        location.reload();
+      }
+    };
+  }
+  updateCartCount();
+  updateAuthLink();
+</script>
+
+<header>
+  <div class="header-main">
+    <div class="logo">
+      <i class="fas fa-gamepad"></i> PC Game Store
+    </div>
+    <nav class="navbar">
+      <a href="index.html">Home</a>
+      <a href="about.html" style="text-decoration: underline;">About Us</a>
+      <a href="wishlist.html">Wishlist</a>
+      <a href="cart.html">Cart (<span id="cartCount">0</span>)</a>
+      <a href="login.html" id="authLink">Login</a>
+    </nav>
+  </div>
+  <!-- Search and sort removed -->
+</header>
+
+<section class="main-content">
+  <h1>About Us</h1>
+  <p>
+    Welcome to PC Game Store — your ultimate destination for the best PC games in the market! We are passionate gamers ourselves, committed to bringing you a carefully curated selection of high-quality PC titles ranging from action-packed adventures to immersive RPGs and engaging simulations.
+  </p>
+  <p>
+    Our mission is to provide a seamless and enjoyable shopping experience with detailed game information, user-friendly navigation, and secure checkout options. Whether you're a casual player or a hardcore enthusiast, PC Game Store is here to help you discover your next favorite game.
+  </p>
+  <p>
+    We value our community and continuously strive to improve our platform based on your feedback. Thank you for choosing PC Game Store — happy gaming!
+  </p>
+  <a href="index.html" class="back-link">← Back to Store</a>
+</section>
+
+<footer>
+  <p>&copy; 2025 PC Game Store. All rights not reserved.</p>
+</footer>
+
+</body>
+</html>

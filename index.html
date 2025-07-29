@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Buy top PC games at the best prices. Action, RPG, Racing, and more.">
+  <meta name="keywords" content="PC games, buy games online, gaming store">
+  <title>PC Game Store</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" crossorigin="anonymous"></script>
+  <style>/* Replace the existing modal styles with these */
+.logout-modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.logout-modal .modal-content {
+  background: #1f1f1f;
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  color: white;
+  max-width: 400px;
+  width: 90%;
+}
+
+.logout-modal button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.logout-modal .confirm {
+  background-color: #00ffff;
+  color: #000;
+}
+
+.logout-modal .cancel {
+  background-color: #444;
+  color: #fff;
+}
+</style>
+
+</head>
+<body>
+  <script>
+    if (!localStorage.getItem("user")) {
+      window.location.href = "login.html";
+    }
+  </script>
+  <header>
+    <div class="header-main">
+      <div class="logo">
+        <i class="fas fa-gamepad"></i> PC Game Store
+      </div>
+      <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="wishlist.html">Wishlist</a>
+        <a href="cart.html">Cart (<span id="cartCount">0</span>)</a>
+        <a href="#" id="logoutLink">Logout</a>
+      </nav>
+    </div>
+    <div class="search-container">
+      <div class="Search-wrapper">
+        <input type="text" id="searchInput" class="search-bar" placeholder="Search for a game..." />
+    </div>
+      <select id="sortSelect">
+        <option value="default">Sort By</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+        <option value="title-asc">Title: A-Z</option>
+        <option value="title-desc">Title: Z-A</option>
+      </select>
+    </div>
+  </header>
+
+  <section class="banner">
+    <h1>Popular PC Games</h1>
+    <p>Discover the best deals on top-rated games</p>
+  </section>
+
+  <section class="main-content">
+    <div class="filters">
+      <button class="filter-button active" data-filter="all">All</button>
+      <button class="filter-button" data-filter="action">Action</button>
+      <button class="filter-button" data-filter="rpg">RPG</button>
+      <button class="filter-button" data-filter="sports">Sports</button>
+      <button class="filter-button" data-filter="simulation">Simulation</button>
+      <button class="filter-button" data-filter="racing">Racing</button>
+    </div>
+
+    <section class="game-list" id="gameList"></section>
+    <div class="pagination" id="pagination"></div>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="about.html">About Us</a>
+      <a>|</a>
+      <a href="contact.html">Contact</a>
+      <a>|</a>
+      <a href="privacypolicy.html">Privacy Policy</a>
+    </div>
+    <p>&copy; 2025 PC Game Store. All rights not reserved.</p>
+  </footer>
+
+  <!-- Logout confirmation modal -->
+  <div class="logout-modal" id="logoutModal">
+  <div class="modal-content">
+    <p>Are you sure you want to logout?</p>
+    <button class="confirm" onclick="confirmLogout()">Yes</button>
+    <button class="cancel" onclick="cancelLogout()">Cancel</button>
+  </div>
+</div>
+
+  <script>// Replace the existing logout modal JavaScript with these functions
+function confirmLogout() {
+  localStorage.removeItem("user");
+  window.location.href = "login.html";
+}
+
+function cancelLogout() {
+  document.getElementById("logoutModal").style.display = "none";
+}
+
+// Update the event listeners
+document.getElementById("logoutLink").addEventListener("click", function(e) {
+  e.preventDefault();
+  document.getElementById("logoutModal").style.display = "flex";
+});
+
+// Optional: Close modal if click outside modal content
+window.addEventListener("click", function(event) {
+  if (event.target === document.getElementById("logoutModal")) {
+    document.getElementById("logoutModal").style.display = "none";
+  }
+});
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>

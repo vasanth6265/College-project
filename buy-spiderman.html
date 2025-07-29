@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Buy Marvel's Spider-Man Remastered</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .game-details {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .details-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .cover-image {
+      flex: 1 1 300px;
+      max-width: 300px;
+    }
+    .cover-image img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .info {
+      flex: 2 1 400px;
+    }
+    .info h2 {
+      margin-top: 0;
+      font-size: 28px;
+      color: #00ffff;
+    }
+    .info p {
+      margin-bottom: 10px;
+    }
+    .buy-btn {
+      padding: 12px 24px;
+      background-color: #00ffff;
+      border: none;
+      border-radius: 6px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+      font-size: 16px;
+    }
+    .buy-btn:hover {
+      background-color: #00dddd;
+    }
+    a.back-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: #00ffff;
+      text-decoration: none;
+    }
+    a.back-link:hover {
+      text-decoration: underline;
+    }
+    .screenshots {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .screenshots img {
+      max-width: 200px;
+      border-radius: 8px;
+    }
+    @media (max-width: 768px) {
+      .details-wrapper {
+        flex-direction: column;
+        align-items: center;
+      }
+      .cover-image, .info {
+        max-width: 100%;
+        text-align: center;
+      }
+      .info {
+        padding-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  if (!localStorage.getItem("user")) {
+    window.location.href = "login.html";
+  }
+</script>
+
+<header>
+  <div class="header-main">
+    <div class="logo">
+      <i class="fas fa-gamepad"></i> PC Game Store
+    </div>
+    <nav class="navbar">
+      <a href="index.html">Home</a>
+      <a href="wishlist.html">Wishlist</a>
+      <a href="cart.html">Cart (<span id="cartCount">0</span>)</a>
+      <a href="login.html" id="authLink">Login</a>
+    </nav>
+  </div>
+  <div class="search-container">
+    <input type="text" id="searchInput" class="search-bar" placeholder="Search for a game..." />
+    <select id="sortSelect">
+      <option value="default">Sort By</option>
+      <option value="price-asc">Price: Low to High</option>
+      <option value="price-desc">Price: High to Low</option>
+      <option value="title-asc">Title: A-Z</option>
+      <option value="title-desc">Title: Z-A</option>
+    </select>
+  </div>
+</header>
+
+<section class="main-content">
+  <div class="game-details">
+    <div class="details-wrapper">
+      <div class="cover-image">
+        <img src="images/spiderman.jpg" alt="Marvel's Spider-Man Remastered" />
+      </div>
+      <div class="info">
+        <h2>Marvel's Spider-Man Remastered</h2>
+        <p><strong>Genre:</strong> Action, Adventure</p>
+        <p><strong>Price:</strong> ₹ 3,999</p>
+        <p><strong>Developer:</strong> Insomniac Games</p>
+        <p><strong>Release Year:</strong> 2020</p>
+        <p><strong>Description:</strong> Swing through New York City as Spider-Man in this remastered version featuring enhanced graphics, new suits, and exciting gameplay.</p>
+
+        <button class="buy-btn" onclick="addToCart()">Buy Now</button>
+        <a href="index.html" class="back-link">← Back to Store</a>
+      </div>
+    </div>
+
+    <div class="screenshots">
+      <img src="images/spiderman_ss1.jpg" alt="Screenshot 1" />
+      <img src="images/spiderman_ss2.jpg" alt="Screenshot 2" />
+      <img src="images/spiderman_ss3.jpg" alt="Screenshot 3" />
+      <img src="images/spiderman_ss4.jpg" alt="Screenshot 4" />
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 PC Game Store. All rights reserved.</p>
+</footer>
+
+<script>
+  function addToCart() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const game = {
+      title: "Marvel's Spider-Man Remastered",
+      price: 3999,
+      image: "images/spiderman.jpg"
+    };
+    cart.push(game);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("Marvel's Spider-Man Remastered has been added to your cart!");
+    updateCartCount();
+  }
+
+  function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    document.getElementById("cartCount").textContent = cart.length;
+  }
+
+  function updateAuthLink() {
+    const authLink = document.getElementById("authLink");
+    const user = localStorage.getItem("user");
+    authLink.textContent = user ? "Logout" : "Login";
+    authLink.addEventListener("click", (e) => {
+      if (user) {
+        e.preventDefault();
+        localStorage.removeItem("user");
+        location.reload();
+      }
+    });
+  }
+
+  updateCartCount();
+  updateAuthLink();
+</script>
+
+</body>
+</html>
