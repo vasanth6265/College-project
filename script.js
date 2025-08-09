@@ -1,11 +1,3 @@
-// Mobile menu toggle
-const navLinks = document.querySelector(".nav-links");
-const logo = document.querySelector(".logo");
-
-logo.addEventListener("click", () => {
-    navLinks.classList.toggle("show");
-});
-
 // Contact form submission (demo only)
 document.getElementById("contactForm").addEventListener("submit", function(e) {
     e.preventDefault();
@@ -18,11 +10,11 @@ const reveals = document.querySelectorAll(".reveal");
 const revealOnScroll = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add("active"); // Show animation
+            entry.target.classList.add("active");
         } else {
-            entry.target.classList.remove("active"); // Reset when out of view
+            entry.target.classList.remove("active");
         }
     });
-}, { threshold: 0.2 }); // Trigger when 20% of element is visible
+}, { threshold: 0.2 });
 
 reveals.forEach(el => revealOnScroll.observe(el));
